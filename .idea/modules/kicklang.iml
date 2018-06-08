@@ -5,6 +5,7 @@
     <output-test url="file://$MODULE_DIR$/../../target/scala-2.12/test-classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/main/scala" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/scala" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.12/src_managed/main" isTestSource="false" generated="true" />
@@ -16,6 +17,14 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="sbt: org.scala-lang:scala-library:2.12.6:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm-platform:5.0.1-1.4.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:windows-x86_64:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:windows-x86:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:macosx-x86_64:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:linux-x86_64:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:linux-x86:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco.javacpp-presets:llvm:5.0.1-1.4.1:jar" level="project" />
+    <orderEntry type="library" name="sbt: org.bytedeco:javacpp:1.4.1:jar" level="project" />
     <orderEntry type="library" name="sbt: org.antlr:antlr4-runtime:4.7.1:jar" level="project" />
   </component>
 </module>
