@@ -1,0 +1,51 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext.llvm_version = '5.0.1-1.4.1'
+    ext.antlr_version = '4.7.1'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+group 'com.scorsi'
+version '0.1'
+
+apply plugin: 'kotlin'
+apply plugin: 'antlr'
+apply plugin: 'application' // TO REMOVE LATER
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk8
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: "$kotlin_version"
+
+    // https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/llvm-platform
+    compile group: 'org.bytedeco.javacpp-presets', name: 'llvm-platform', version: "$llvm_version"
+
+    // https://mvnrepository.com/artifact/org.antlr/antlr4
+    antlr group: 'org.antlr', name: 'antlr4', version: "$antlr_version"
+
+    // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
+    compile group: 'org.antlr', name: 'antlr4-runtime', version: "$antlr_version"
+}
+
+generateGrammarSource {
+    outputDirectory = new File("${project.buildDir}/generated-src/antlr/main/com/scorsi".toString())
+    arguments += ["-visitor"]
+}
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+    dependsOn(generateGrammarSource)
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+
+mainClassName = "com.scorsi.MainKt"
