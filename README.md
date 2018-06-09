@@ -45,17 +45,17 @@ int add(int a, int b) {
 
 ### If/ElseIf/Else statement
 ```
-?(a=0){0}|?(a=1){1}|_{2}
+?(a=0){0}|?(a=1){1}|{2}
 # OR
 ?(a = 0) { 0 }
 |?(a = 1) { 1 }
-|_ { 2 }
+| { 2 }
 # OR
 ?(a = 0) {
   0
 } | ?(a = 1) {
   1
-} | _ {
+} | {
   2
 }
 ```
@@ -71,11 +71,11 @@ if (a == 0) {
 
 ### Variable declaration with returned value of a if statement
 ```
-!(x:int){?(a=0){0}|_{1}}
+!(x:int){?(a=0){0}|{1}}
 # OR
 !(x : int) {
   ?(a = 0) { 0 }
-  |_ { 1 } 
+  | { 1 } 
 }
 ```
 ```c
