@@ -16,10 +16,16 @@ You probably don't want to use Kick.
 
 Kick is an experimental language absolutly not verbose and also absolutly not self-explained. 
 
-I will compare Kick with C. You will see that Kick is all the time lightweight and faster to write than C.
+## What does Kick look like ?
 
+I will compare Kick with C for better explaination. You will see that Kick is often lightweight and faster to write than C.
 
 ### Variable declaration
+
+We declare variable with the `!` character.
+
+The first is the name of the variable and the second is the type.
+
 ```
 !(x:int){0}
 # OR
@@ -30,6 +36,11 @@ int x = 0;
 ```
 
 ### Function declaration
+
+For function declaration we have 3 parts in the declaration.
+
+The first is the name of the function, the second is the type and the third is the arguments.
+
 ```
 !(add:int:(a:int,b:int)){a+b}
 # OR
@@ -43,12 +54,26 @@ int add(int a, int b) {
 }
 ```
 
+### Casting
+
+We cast with the '->' character.
+
+```
+!(c : char) { i -> char }
+```
+```c
+char c = (char) i;
+```
+
 ### If/ElseIf/Else statement
+
+The if statement is declared with the `?` character. Follow by the `|` character for the else.
+
 ```
 ?(a=0){0}|?(a=1){1}|{2}
 # OR
 ?(a = 0) { 0 }
-|?(a = 1) { 1 }
+| ?(a = 1) { 1 }
 | { 2 }
 # OR
 ?(a = 0) {
@@ -70,6 +95,7 @@ if (a == 0) {
 ```
 
 ### Variable declaration with returned value of a if statement
+
 ```
 !(x:int){?(a=0){0}|{1}}
 # OR
@@ -88,6 +114,9 @@ if (a == 0) {
 ```
 
 ### Piped functions
+
+If you don't know what is a piped function, the principle is to give the result of the left argument to the right argument.
+
 ```
 a()|>b()|>c()|>d()
 # OR
