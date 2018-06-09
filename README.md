@@ -21,9 +21,9 @@ I will compare Kick with C. You will see that Kick is all the time lightweight a
 
 ### Variable declaration
 ```
-!(x:int){<- 0}
+!(x:int){0}
 # OR
-!(x : int) {<- 0}
+!(x : int) { 0 }
 ```
 ```c
 int x = 0;
@@ -31,10 +31,10 @@ int x = 0;
 
 ### Function declaration
 ```
-!(add:int:(a:int,b:int)){<-(a+b)}
+!(add:int:(a:int,b:int)){a+b}
 # OR
 !(add : int : (a : int, b : int)) {
-  <- (a + b)
+  a + b
 }
 ```
 ```c
@@ -45,16 +45,19 @@ int add(int a, int b) {
 
 ### If/ElseIf/Else statement
 ```
-<- (?(a=0)(<-0)|?(a=1)(<-1)|_(<-2))
+?(a=0){0}|?(a=1){1}|_{2}
 # OR
-<- (
-  ?(a = 0)
-    (<- 0)
-  |?(a = 1)
-    (<- 1)
-  |_
-    (<- 2)
-)
+?(a = 0) { 0 }
+|?(a = 1) { 1 }
+|_ { 2 }
+# OR
+?(a = 0) {
+  0
+} | ?(a = 1) {
+  1
+} | _ {
+  2
+}
 ```
 ```c
 if (a == 0) {
@@ -68,15 +71,11 @@ if (a == 0) {
 
 ### Variable declaration with returned value of a if statement
 ```
-!(x:int){<-(?(a=0)(<-0)|_(<-1))}
+!(x:int){?(a=0){0}|_{1}}
 # OR
 !(x : int) {
-  <- (
-    ?(a = 0)
-      (<- 0)
-    |_
-      (<- 1)
-  )
+  ?(a = 0) { 0 }
+  |_ { 1 } 
 }
 ```
 ```c
