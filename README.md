@@ -1,24 +1,24 @@
-# Kick
+# Yaul
 
 The name may change in the future.
 
 It is not ready for production uses. In hard development.
 
-## The idea behind Kick
+## The idea behind Yaul
 
-The idea behind Kick was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
+The idea behind Yaul was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
 
 I took inspiration of [Clojure](https://clojure.org/guides/learn/syntax), when I see this language I say to myself "Hum, I don't understand what is written right there". So I decided to do the same thing just for fun.
 
-## Why using Kick ?
+## Why using Yaul ?
 
-You probably don't want to use Kick.
+You probably don't want to use Yaul.
 
-Kick is an experimental language absolutly not verbose and also absolutly not self-explained. 
+Yaul is an experimental language absolutly not verbose and also absolutly not self-explained. 
 
-## What does Kick look like ?
+## What does Yaul look like ?
 
-I will compare Kick with C for better explaination. You will see that Kick is often lightweight and faster to write than C.
+I will compare Yaul with C for better explaination. You will see that Yaul is often lightweight and faster to write than C.
 
 ### Variable declaration
 
