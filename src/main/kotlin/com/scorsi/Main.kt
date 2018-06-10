@@ -4,11 +4,11 @@ import org.antlr.v4.runtime.ANTLRInputStream
 import org.antlr.v4.runtime.CommonTokenStream
 
 fun main(args: Array<String>) {
-    val inputStream = ANTLRInputStream("12.3 + 4")
-    val markupLexer = ArithmeticLexer(inputStream)
+    val inputStream = ANTLRInputStream("toto(\"titi\")")
+    val markupLexer = YaulLexer(inputStream)
     val commonTokenStream = CommonTokenStream(markupLexer)
-    val markupParser = ArithmeticParser(commonTokenStream)
-    val exprContext = markupParser.expr()
-    val visitor = ArithmeticVisitor()
+    val markupParser = YaulParser(commonTokenStream)
+    val exprContext = markupParser.expression()
+    val visitor = YaulVisitor()
     println(visitor.visit(exprContext))
 }
