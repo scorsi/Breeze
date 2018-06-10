@@ -1,4 +1,4 @@
-# Yaul
+# Yaul - Yet Another Useless Language
 
 The name may change in the future.
 
