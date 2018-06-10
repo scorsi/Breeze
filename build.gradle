@@ -42,7 +42,7 @@ dependencies {
 
 generateGrammarSource {
     outputDirectory = new File("${project.buildDir}/generated-src/antlr/main/com/scorsi".toString())
-    arguments += ["-visitor"]
+    arguments += ["-visitor", "-package", "com.scorsi"]
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
