@@ -50,11 +50,8 @@ What does a complexe Yaul variable declaration give in C ?
 int a = 0;
 
 int test_decl_x() {
-  if (a == 0) {
-    return 0;
-  } else {
-    return 1;
-  }
+  if (a == 0) { return 0; }
+  else { return 1; }
 }
 
 int test() {
