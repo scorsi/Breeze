@@ -35,6 +35,30 @@ The first is the name of the variable and the second is the type.
 int x = 0;
 ```
 
+What does a complexe Yaul variable declaration give in C ?
+
+```
+!(test : int : ()) {
+  !(x : int) {
+    ?(a = 0) { 0 }
+    | { 1 } 
+  }
+}
+```
+```c
+int test_decl_x() {
+  if (a == 0) {
+    return 0;
+  } else {
+    return 1;
+  }
+}
+
+int test() {
+  int x = test_decl_x();
+}
+```
+
 ### Function declaration
 
 For function declaration we have 3 parts in the declaration.
@@ -91,25 +115,6 @@ if (a == 0) {
   return 1;
 } else {
   return 2;
-}
-```
-
-### Variable declaration with returned value of a if statement
-
-```
-!(x:int){?(a=0){0}|{1}}
-# OR
-!(x : int) {
-  ?(a = 0) { 0 }
-  | { 1 } 
-}
-```
-```c
-int x;
-if (a == 0) {
-  x = 0;
-} else {
-  x = 1;
 }
 ```
 
