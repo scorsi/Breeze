@@ -56,6 +56,7 @@ int test_decl_x() {
 
 int test() {
   int x = test_decl_x();
+  return x;
 }
 ```
 
