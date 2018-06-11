@@ -81,10 +81,10 @@ int add(int a, int b) {
 
 ### Casting
 
-We cast with the '->' character.
+We cast with the '<:' character.
 
 ```
-!(c : char) { i -> char }
+!(c : char) { (i <: char) }
 ```
 ```c
 char c = (char) i;
