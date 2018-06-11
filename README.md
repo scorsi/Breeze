@@ -38,6 +38,7 @@ int x = 0;
 What does a complexe Yaul variable declaration give in C ?
 
 ```
+!(a : int) { 0 }
 !(test : int : ()) {
   !(x : int) {
     ?(a = 0) { 0 }
@@ -46,6 +47,8 @@ What does a complexe Yaul variable declaration give in C ?
 }
 ```
 ```c
+int a = 0;
+
 int test_decl_x() {
   if (a == 0) {
     return 0;
