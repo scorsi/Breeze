@@ -26,7 +26,7 @@ We declare variable with the `!` character.
 
 The first is the name of the variable and the second is the type.
 
-```
+```yaul
 !(x:int){0}
 # OR
 !(x : int) { 0 }
@@ -37,7 +37,7 @@ int x = 0;
 
 What does a complexe Yaul variable declaration give in C ?
 
-```
+```yaul
 !(a : int) { 0 }
 !(test : int : ()) {
   !(x : int) {
@@ -66,7 +66,7 @@ For function declaration we have 3 parts in the declaration.
 
 The first is the name of the function, the second is the type and the third is the arguments.
 
-```
+```yaul
 !(add:int:(a:int,b:int)){a+b}
 # OR
 !(add : int : (a : int, b : int)) {
@@ -83,7 +83,7 @@ int add(int a, int b) {
 
 We cast with the '<:' character.
 
-```
+```yaul
 !(c : char) { (i <: char) }
 ```
 ```c
@@ -94,7 +94,7 @@ char c = (char) i;
 
 The if statement is declared with the `?` character. Follow by the `|` character for the else.
 
-```
+```yaul
 ?(a=0){0}|?(a=1){1}|{2}
 # OR
 ?(a = 0) { 0 }
@@ -121,13 +121,13 @@ if (a == 0) {
 
 ### Match/Switch statement
 
-```
+```yaul
 !(a : int) { 0 }
 ~(a)
 | (0) { 0 }
 | (1) { 1 }
 ```
-```
+```c
 int a = 0;
 switch (a) {
   case 0: return 0;
@@ -139,7 +139,7 @@ switch (a) {
 
 If you don't know what is a piped function, the principle is to give the result of the left argument to the right argument.
 
-```
+```yaul
 a()|>b()|>c()|>d()
 # OR
 a()
