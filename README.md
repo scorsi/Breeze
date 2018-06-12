@@ -119,6 +119,22 @@ if (a == 0) {
 }
 ```
 
+### Match/Switch statement
+
+```
+!(a : int) { 0 }
+~(a)
+| (0) { 0 }
+| (1) { 1 }
+```
+```
+int a = 0;
+switch (a) {
+  case 0: return 0;
+  case 1: return 1;
+}
+```
+
 ### Piped functions
 
 If you don't know what is a piped function, the principle is to give the result of the left argument to the right argument.
