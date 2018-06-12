@@ -87,6 +87,7 @@ By default, the last statement of the execution of a function is the returned va
 !(x : int : (a : bool, b : int)) {
   ?(a = true) { <- 0 }
   b * 2
+}
 ```
 ```c
 int x(bool a, int b) {
