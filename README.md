@@ -79,6 +79,24 @@ int add(int a, int b) {
 }
 ```
 
+### Function return
+
+By default, the last statement of the execution of a function is the returned value. You can force return by using the '<-' symbol.
+
+```yaul
+!(x : int : (a : bool, b : int)) {
+  ?(a = true) { <- 0 }
+  b * 2
+```
+```c
+int x(bool a, int b) {
+  if (a == true) {
+    return 0;
+  }
+  return b * 2;
+}
+```
+
 ### Casting
 
 We cast with the '<:' character.
