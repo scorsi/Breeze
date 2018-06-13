@@ -100,14 +100,7 @@ int x(bool a, int b) {
 
 ### Casting
 
-We cast with the '<:' character.
-
-```yaul
-!(c : char) { (i <: char) }
-```
-```c
-char c = (char) i;
-```
+In progress.
 
 ### If/ElseIf/Else statement
 
