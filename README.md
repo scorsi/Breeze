@@ -8,7 +8,7 @@ It is not ready for production uses. In hard development.
 
 The idea behind Yaul was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
 
-I took inspiration of [Clojure](https://clojure.org/guides/learn/syntax), when I see this language I tell myself "Hum, I don't understand what is written right there". So I decided to do the same thing just for fun.
+I wanted to have a really light syntaxe with high possibility.
 
 ## Why using Yaul ?
 
