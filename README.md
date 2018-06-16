@@ -20,11 +20,6 @@ c = (d) {
   a + b() + d
 }
 
-# If declaration
-? (a == 42) { 1 }
-| ? (a == 43) { 2 }
-| { 3 }
-
 # Proto declaration
 todoProto = {
   todoString = "todo"
