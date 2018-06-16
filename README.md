@@ -1,5 +1,7 @@
 # Yaul - Yet Another Useless Language
 
+Yaul is a dynamic prototype-based language.
+
 The name may change in the future.
 
 It is not ready for production uses. In hard development.
