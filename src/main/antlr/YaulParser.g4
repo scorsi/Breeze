@@ -1,48 +1,96 @@
 parser grammar YaulParser;
 
-options { tokenVocab=YaulLexer; }
+options {
+    tokenVocab=YaulLexer;
+}
 
-rootExpressions
-    :
-    | variableDeclaration rootExpressions
-    | functionDeclaration rootExpressions
-    | expression rootExpressions
+program
+    : statement*
     ;
 
-expressions
-    : expression+
+statement
+    : declarationStatement
+    | expressionStatement
+    ;
+
+declarationStatement
+    : declaration ';'
+    ;
+
+expressionStatement
+    : expression ';'
+    ;
+
+expressionSequence
+    : expression (',' expression)*
     ;
 
 expression
-    : left=expression operator=('/'|'*') right=expression
-    | left=expression operator=('+'|'-') right=expression
-    | '(' expression ')'
-    | unary=('+'|'-') expression
-    | methodCall
-    | variableDeclaration
+    : expression '[' expressionSequence ']'                     // ARRAY ACCESS
+    | expression '.' expression                                 // PROTYPE ATTRIBUTE/METHOD ACCESS
+    | expression '(' expressionSequence ')'                     // FUNCTION CALL
+    | '++' expression
+    | '--' expression
+    | '+' expression
+    | '-' expression
+    | '!' expression
+    | expression ('*' | '/' | '%') expression
+    | expression ('+' | '-') expression
+    //| expression ('<<' | '>>') expression
+    | expression ('<' | '>' | '<=' | '>=' | '==') expression
+    | expression '&&' expression
+    | expression '||' expression
     | IDENT
     | STRING
-    | NUMBER
+    | INTEGER
+    | DOUBLE
+    | '(' expression ')'
     ;
 
+declaration
+    : variableDeclaration
+    | functionDeclaration
+    | prototypeDeclaration
+    ;
+
+// --====================================================================--
+
+/*                      --- VARIABLE DECLARATION ---
+myVariable = 1
+ */
 variableDeclaration
-    : '!' '(' name=IDENT ':' type=IDENT ')' '{' expressions '}'
+    : name=IDENT '=' value=expression
     ;
 
+/*                      --- FUNCTION DECLARATION ---
+myFunction = () { ... }
+myFunction = (a) { ... }
+myFunction = (a, b) { ... }
+...
+ */
 functionDeclaration
-    : '!' '(' name=IDENT ':' type=IDENT ':' '(' functionArguments ')' ')' '{' expressions '}'
+    : name=IDENT '=' '(' args=functionDeclarationArguments ')' '{' body=functionDeclarationBody '}'
     ;
 
-functionArguments
-    :
-    | name=IDENT ':' type=IDENT (',' functionArguments)*?
+functionDeclarationArguments
+    : (IDENT (',' IDENT)*)?
     ;
 
-methodCall
-    : name=IDENT '(' methodCallArguments ')'
+functionDeclarationBody
+    : expressionStatement*
     ;
 
-methodCallArguments
-    :
-    | expression (',' expression)*
+/*                      --- PROTOTYPE DECLARATION ---
+myProto = {
+    myAttribute = 0
+    myMethod = () { self.myAttribute }
+    ...
+}
+ */
+prototypeDeclaration
+    : name=IDENT '=' '{' body=prototypeDeclarationBody '}'
+    ;
+
+prototypeDeclarationBody
+    : declarationStatement*
     ;
