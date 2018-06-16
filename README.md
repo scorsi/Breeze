@@ -27,20 +27,20 @@ We declare variable with the `!` character.
 The first is the name of the variable and the second is the type.
 
 ```yaul
-!(x:int){0}
-# OR
-!(x : int) { 0 }
+!(x){ 0 }
+!(a){ 3.2 }
 ```
 ```c
 int x = 0;
+double a = 3.2;
 ```
 
 What does a complexe Yaul variable declaration give in C ?
 
 ```yaul
-!(a : int) { 0 }
-!(test : int : ()) {
-  !(x : int) {
+!(a) { 0 }
+!(test) [] {
+  !(x) {
     ?(a = 0) { 0 }
     | { 1 } 
   }
@@ -67,11 +67,7 @@ For function declaration we have 3 parts in the declaration.
 The first is the name of the function, the second is the type and the third is the arguments.
 
 ```yaul
-!(add:int:(a:int,b:int)){a+b}
-# OR
-!(add : int : (a : int, b : int)) {
-  a + b
-}
+!(add) [a, b] { a + b }
 ```
 ```c
 int add(int a, int b) {
@@ -84,7 +80,7 @@ int add(int a, int b) {
 By default, the last statement of the execution of a function is the returned value. You can force return by using the '<-' symbol.
 
 ```yaul
-!(x : int : (a : bool, b : int)) {
+!(x) [a, b] {
   ?(a = true) { <- 0 }
   b * 2
 }
@@ -134,7 +130,7 @@ if (a == 0) {
 ### Match/Switch statement
 
 ```yaul
-!(a : int) { 0 }
+!(a) { 0 }
 ~(a)
 | (0) { 0 }
 | (1) { 1 }
