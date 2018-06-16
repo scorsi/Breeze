@@ -1,8 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.2.41'
-    ext.llvm_version = '5.0.1-1.4.1'
+    ext.kotlin_version = '1.2.50'
     ext.antlr_version = '4.7.1'
-    ext.stringtemplate_version = '4.0.8'
 
     repositories {
         mavenCentral()
@@ -27,22 +25,16 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-stdlib-jdk8
     compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jdk8', version: "$kotlin_version"
 
-    // https://mvnrepository.com/artifact/org.bytedeco.javacpp-presets/llvm-platform
-    compile group: 'org.bytedeco.javacpp-presets', name: 'llvm-platform', version: "$llvm_version"
-
     // https://mvnrepository.com/artifact/org.antlr/antlr4
     antlr group: 'org.antlr', name: 'antlr4', version: "$antlr_version"
 
     // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
     compile group: 'org.antlr', name: 'antlr4-runtime', version: "$antlr_version"
-
-    // https://mvnrepository.com/artifact/org.antlr/ST4
-    compile group: 'org.antlr', name: 'ST4', version: "$stringtemplate_version"
 }
 
 generateGrammarSource {
     outputDirectory = new File("${project.buildDir}/generated-src/antlr/main/com/scorsi".toString())
-    arguments += ["-visitor", "-package", "com.scorsi"]
+    arguments += ["-visitor", "-no-listener", "-package", "com.scorsi"]
 }
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
