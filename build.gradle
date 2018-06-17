@@ -58,13 +58,17 @@ test {
     minHeapSize = "128m"
     maxHeapSize = "512m"
 
+    failFast = false
+
     beforeTest { descriptor ->
         logger.lifecycle("Running test: $descriptor")
     }
 
+    /*
     onOutput { descriptor, event ->
         logger.lifecycle("Test: $descriptor produced standard out/err: $event.message")
     }
+     */
 }
 
 mainClassName = "com.scorsi.MainKt"
