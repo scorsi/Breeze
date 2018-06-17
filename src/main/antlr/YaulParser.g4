@@ -9,43 +9,40 @@ program
     ;
 
 statement
-    : declarationStatement
-    | expressionStatement
+    : expression ';'        # expressionStatement
+    | declaration ';'       # expressionDeclaration
     ;
 
-declarationStatement
-    : declaration ';'
-    ;
-
-expressionStatement
-    : expression ';'
-    ;
+// EXPRESSION STATEMENT
 
 expressionSequence
     : expression (',' expression)*
     ;
 
 expression
-    : expression '[' expressionSequence ']'                     // ARRAY ACCESS
-    | expression '.' expression                                 // PROTYPE ATTRIBUTE/METHOD ACCESS
-    | expression '(' expressionSequence ')'                     // FUNCTION CALL
-    | '++' expression
-    | '--' expression
-    | '+' expression
-    | '-' expression
-    | '!' expression
-    | expression ('*' | '/' | '%') expression
-    | expression ('+' | '-') expression
+    : expression '[' index=expression ']'                                       # memberIndexExpression
+    | expression '.' member=expression                                          # membreDotExpression
+    | expression '(' arguments=expressionSequence ')'                           # callExpression
+    | unary='++' expression                                                     # unaryExpression
+    | unary='--' expression                                                     # unaryExpression
+    | unary='+' expression                                                      # unaryExpression
+    | unary='-' expression                                                      # unaryExpression
+    | unary='!' expression                                                      # unaryExpression
+    | left=expression op=('*' | '/' | '%') right=expression                     # calcExpression
+    | left=expression op=('+' | '-') right=expression                           # calcExpression
     //| expression ('<<' | '>>') expression
-    | expression ('<' | '>' | '<=' | '>=' | '==') expression
-    | expression '&&' expression
-    | expression '||' expression
-    | IDENT
-    | STRING
-    | INTEGER
-    | DOUBLE
-    | '(' expression ')'
+    | left=expression op=('<' | '>' | '<=' | '>=') right=expression             # calcExpression
+    | left=expression op=('!=' | '==' | '!==' | '===') right=expression         # calcExpression
+    | left=expression op='&&' right=expression                                  # calcExpression
+    | left=expression op='||' right=expression                                  # calcExpression
+    | IDENT                                                                     # identityExpression
+    | STRING                                                                    # stringExpression
+    | INTEGER                                                                   # integerExpression
+    | DOUBLE                                                                    # doubleExpression
+    | '(' expression ')'                                                        # parenthesizedExpression
     ;
+
+// DECLARATION STATEMENT
 
 declaration
     : variableDeclaration
@@ -77,7 +74,7 @@ functionDeclarationArguments
     ;
 
 functionDeclarationBody
-    : expressionStatement*
+    : (expression ';')*
     ;
 
 /*                      --- PROTOTYPE DECLARATION ---
@@ -92,5 +89,5 @@ prototypeDeclaration
     ;
 
 prototypeDeclarationBody
-    : declarationStatement*
+    : (declaration ';')*
     ;
