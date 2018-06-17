@@ -19,7 +19,7 @@ interface Node {
     val selection: Selection?
 }
 
-class ListNode(val list: List<Node>, override val selection: Selection? = null) : Node
+class ListNode(override val selection: Selection?, val list: List<Node>) : Node
 
 //
 // Second layer of nodes
@@ -43,9 +43,9 @@ data class IdentifierVal(override val selection: Selection?, val value: String) 
 // Declarations
 //
 
-data class VariableDeclaration(override val selection: Selection?, val identifier: String, val value: Expression) : Declaration
-data class FunctionDeclaration(override val selection: Selection?, val identifier: String, val body: List<Node>) : Declaration
-data class PrototypeDeclaration(override val selection: Selection?, val identifier: String, val body: List<Node>) : Declaration
+data class VariableDeclaration(override val selection: Selection?, val left: Expression, val value: Expression) : Declaration
+data class FunctionDeclaration(override val selection: Selection?, val left: Expression, val args: List<String>, val body: List<Node>) : Declaration
+data class PrototypeDeclaration(override val selection: Selection?, val left: Expression, val body: List<Node>) : Declaration
 
 //
 // Expressions
