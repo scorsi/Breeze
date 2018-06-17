@@ -60,7 +60,7 @@ class BreezeVisitor : BreezeParserBaseVisitor<Node?>() {
             )
 
     override fun visitExpressionSequence(ctx: BreezeParser.ExpressionSequenceContext?): ListNode? =
-            ListNode(ctx!!.expression().map { visit(it!!)!! as Expression })
+            ListNode(ctx!!.createSelection(), ctx.expression().map { visit(it!!)!! as Expression })
 
     override fun visitStringExpression(ctx: BreezeParser.StringExpressionContext?): StringVal? =
             StringVal(ctx!!.createSelection(), ctx.STRING()!!.text!!)
@@ -73,4 +73,31 @@ class BreezeVisitor : BreezeParserBaseVisitor<Node?>() {
 
     override fun visitIdentityExpression(ctx: BreezeParser.IdentityExpressionContext?): IdentifierVal? =
             IdentifierVal(ctx!!.createSelection(), ctx.IDENT()!!.text!!)
+
+    override fun visitDeclaration(ctx: BreezeParser.DeclarationContext?): Node? =
+            ctx!!.let {
+                when {
+                    ctx.variableDeclaration() != null -> visit(ctx.variableDeclaration())!!
+                    ctx.functionDeclaration() != null -> visit(ctx.functionDeclaration())!!
+                    else -> visit(ctx.prototypeDeclaration()!!)!!
+                }
+            }
+
+    override fun visitVariableDeclaration(ctx: BreezeParser.VariableDeclarationContext?): VariableDeclaration? =
+            VariableDeclaration(ctx!!.createSelection(), visit(ctx.left!!)!! as Expression, visit(ctx.value!!)!! as Expression)
+
+    override fun visitFunctionDeclaration(ctx: BreezeParser.FunctionDeclarationContext?): Node? =
+            FunctionDeclaration(ctx!!.createSelection(), visit(ctx.left!!)!! as Expression, (visit(ctx.args!!)!! as ListNode).list.map { (it as StringVal).value }, (visit(ctx.body!!)!! as ListNode).list)
+
+    override fun visitFunctionDeclarationArguments(ctx: BreezeParser.FunctionDeclarationArgumentsContext?): Node? =
+            ListNode(ctx!!.createSelection(), ctx.IDENT().map { StringVal(ctx.createSelection(), it.text!!) })
+
+    override fun visitFunctionDeclarationBody(ctx: BreezeParser.FunctionDeclarationBodyContext?): Node? =
+            ListNode(ctx!!.createSelection(), ctx.expression()!!.map { visit(it!!)!! })
+
+    override fun visitPrototypeDeclaration(ctx: BreezeParser.PrototypeDeclarationContext?): Node? =
+            PrototypeDeclaration(ctx!!.createSelection(), visit(ctx.left!!)!! as Expression, (visit(ctx.body!!)!! as ListNode).list.map { it as Declaration })
+
+    override fun visitPrototypeDeclarationBody(ctx: BreezeParser.PrototypeDeclarationBodyContext?): Node? =
+            ListNode(ctx!!.createSelection(), ctx.declaration()!!.map { visit(it!!)!! })
 }
