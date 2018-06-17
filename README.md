@@ -1,6 +1,23 @@
 # Breeze - Code with freshness without limits
 
-Code with freshness.
+Inspired by Kotlin and JavaScript.
+
+- Functional
+- Dynamic and no types
+- Prototype-based
+- No exceptions
+- Fully data-driven and null-driven means that everything is data : an object
+- Light and understandable syntax
+
+Control your data as it coming with lot of functional thinking and data control flow.
+
+Change your data on the road with the prototype-based. Everything is customizable, perfect for high possibility.
+
+Don't break your code with exceptions or goto/label.
+
+Read your code from up to down and easily understand it.
+
+## Take a look at Breeze
 
 ```breeze
 # Variable declaration
