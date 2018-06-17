@@ -1,7 +1,6 @@
 lexer grammar BreezeLexer;
 
-WS: [ \t\u000C\r]+ -> skip;
-EOL : '\n';
+WS: [ \t\u000C\r\n]+ -> skip;
 INTEGER: ('0' .. '9')+;
 FLOAT: ('0' .. '9')+ ('.' ('0' .. '9')+)?;
 STRING: '"' ~('"')* '"';
