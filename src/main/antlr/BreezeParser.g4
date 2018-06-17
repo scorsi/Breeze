@@ -56,7 +56,7 @@ declaration
 myVariable = 1
  */
 variableDeclaration
-    : name=IDENT '=' value=expression
+    : left=expression '=' value=expression
     ;
 
 /*                      --- FUNCTION DECLARATION ---
@@ -66,7 +66,7 @@ myFunction = (a, b) { ... }
 ...
  */
 functionDeclaration
-    : name=IDENT '=' '(' args=functionDeclarationArguments ')' '{' body=functionDeclarationBody '}'
+    : left=expression '=' '(' args=functionDeclarationArguments ')' '{' body=functionDeclarationBody '}'
     ;
 
 functionDeclarationArguments
@@ -85,7 +85,7 @@ myProto = {
 }
  */
 prototypeDeclaration
-    : name=IDENT '=' '{' body=prototypeDeclarationBody '}'
+    : left=expression '=' '{' body=prototypeDeclarationBody '}'
     ;
 
 prototypeDeclarationBody
