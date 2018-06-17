@@ -1,8 +1,8 @@
-# Yaul - Code with freshness
+# Breeze - Code with freshness without limits
 
 Code with freshness.
 
-```yaul
+```breeze
 # Variable declaration
 a = 0
 
@@ -47,14 +47,14 @@ func = getFunc()
 func(1, 1) |> system.print() # Display "2"
 ```
 
-## The idea behind Yaul
+## The idea behind Breeze
 
-The idea behind Yaul was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
+The idea behind Breeze was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
 
 I wanted to have a really light syntaxe with high possibility.
 
-## Why using Yaul ?
+## Why using Breeze ?
 
-You probably don't want to use Yaul.
 
-Yaul is an experimental language, not ready to use in production.
+
+Breeze is an experimental language, not ready to use in production.
