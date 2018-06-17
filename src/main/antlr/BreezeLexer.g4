@@ -1,9 +1,9 @@
-lexer grammar YaulLexer;
+lexer grammar BreezeLexer;
 
 WS: [ \t\u000C\r]+ -> skip;
 EOL : '\n';
 INTEGER: ('0' .. '9')+;
-DOUBLE: ('0' .. '9')+ ('.' ('0' .. '9')+)?;
+FLOAT: ('0' .. '9')+ ('.' ('0' .. '9')+)?;
 STRING: '"' ~('"')* '"';
 IDENT: [a-zA-Z][a-zA-Z0-9]*;
 

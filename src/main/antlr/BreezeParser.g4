@@ -1,7 +1,7 @@
-parser grammar YaulParser;
+parser grammar BreezeParser;
 
 options {
-    tokenVocab=YaulLexer;
+    tokenVocab=BreezeLexer;
 }
 
 program
@@ -20,7 +20,7 @@ expressionSequence
     ;
 
 expression
-    : expression '[' index=expression ']'                                       # memberIndexExpression
+    : expression '[' member=expression ']'                                      # memberIndexExpression
     | expression '.' member=expression                                          # membreDotExpression
     | expression '(' arguments=expressionSequence ')'                           # callExpression
     | unary='++' expression                                                     # unaryExpression
@@ -38,7 +38,7 @@ expression
     | IDENT                                                                     # identityExpression
     | STRING                                                                    # stringExpression
     | INTEGER                                                                   # integerExpression
-    | DOUBLE                                                                    # doubleExpression
+    | FLOAT                                                                     # floatExpression
     | '(' expression ')'                                                        # parenthesizedExpression
     ;
 
