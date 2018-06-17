@@ -30,6 +30,12 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.antlr/antlr4-runtime
     compile group: 'org.antlr', name: 'antlr4-runtime', version: "$antlr_version"
+
+    // https://mvnrepository.com/artifact/io.kotlintest/kotlintest-runner-junit5
+    testCompile group: 'io.kotlintest', name: 'kotlintest-runner-junit5', version: '3.1.6'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
 }
 
 generateGrammarSource {
@@ -44,4 +50,27 @@ compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+test {
+    useJUnitPlatform()
+
+    testLogging.showStandardStreams = true
+
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+
+    beforeTest { descriptor ->
+        logger.lifecycle("Running test: $descriptor")
+    }
+
+    onOutput { descriptor, event ->
+        logger.lifecycle("Test: $descriptor produced standard out/err: $event.message")
+    }
+}
+
 mainClassName = "com.scorsi.MainKt"
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
