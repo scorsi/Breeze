@@ -102,7 +102,8 @@ class LexerTest : StringSpec({
                         a = 42
                         getA = () { a }
                     }
-                """.trimIndent(), mutableListOf(Pair("IDENT", "test"), Pair("EQUAL", "="), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("EQUAL", "="), Pair("INTEGER", "42"), Pair("IDENT", "getA"), Pair("EQUAL", "="), Pair("LEFT_PARENTHESIS", "("), Pair("RIGHT_PARENTHESIS", ")"), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("RIGHT_CURLY_BRACKET", "}"), Pair("RIGHT_CURLY_BRACKET", "}")))
+                """.trimIndent(), mutableListOf(Pair("IDENT", "test"), Pair("EQUAL", "="), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("EQUAL", "="), Pair("INTEGER", "42"), Pair("IDENT", "getA"), Pair("EQUAL", "="), Pair("LEFT_PARENTHESIS", "("), Pair("RIGHT_PARENTHESIS", ")"), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("RIGHT_CURLY_BRACKET", "}"), Pair("RIGHT_CURLY_BRACKET", "}"))),
+                row("""test={a=42getA=(){a}}""", mutableListOf(Pair("IDENT", "test"), Pair("EQUAL", "="), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("EQUAL", "="), Pair("INTEGER", "42"), Pair("IDENT", "getA"), Pair("EQUAL", "="), Pair("LEFT_PARENTHESIS", "("), Pair("RIGHT_PARENTHESIS", ")"), Pair("LEFT_CURLY_BRACKET", "{"), Pair("IDENT", "a"), Pair("RIGHT_CURLY_BRACKET", "}"), Pair("RIGHT_CURLY_BRACKET", "}")))
         ) { source, match ->
             LexerTestHelper.fullTokensForCode(source) shouldBe match.apply { add(Pair("EOF", "")) }
         }
