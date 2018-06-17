@@ -3,7 +3,7 @@ lexer grammar BreezeLexer;
 WS: [ \t\u000C\r\n]+ -> skip;
 INTEGER: ('0' .. '9')+;
 FLOAT: ('0' .. '9')+ ('.' ('0' .. '9')+)?;
-STRING: '"' ~('"')* '"';
+STRING: '"' ~('"')* '"' { setText(getText().substring(1, getText().length()-1)); };
 IDENT: [a-zA-Z][a-zA-Z0-9]*;
 
 DOT: '.';
