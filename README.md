@@ -2,18 +2,25 @@
 
 Inspired by Kotlin and JavaScript.
 
-- Functional
-- Dynamic and no types
-- Prototype-based
-- No exceptions
-- Fully data-driven and null-driven means that everything is data : an object
-- Light and understandable syntax
+### Functional Object-oriented
 
 Control your data as it coming with lot of functional thinking and data control flow.
 
-Change your data on the road with the prototype-based. Everything is customizable, perfect for high possibility.
+### Typed with type inferences
 
-Don't break your code with exceptions or goto/label.
+Typed for better control of your code.
+
+### Prototype-based
+
+Create or alter a prototype will result of a creation of a new type.
+
+Change your data on the road. Everything is customizable, perfect for high possibility.
+
+### No exceptions
+
+Don't break your code with exceptions or goto/label. Write your code as it should be executed.
+
+### Light and understandable syntax
 
 Read your code from up to down and easily understand it.
 
