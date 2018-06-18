@@ -90,7 +90,8 @@ Breeze is an experimental language, not ready to use in production.
  - 0.1 : Working language.
  - 0.2 : Add arrays.
  - 0.3 : Add immutable and private variable declaration.
- - 0.4 : Add more default attributes methodes as `let`, `apply`, `forEach`...
+ - 0.4 : Add lambdas.
+ - 0.5 : Add more default attributes methodes as `let`, `apply`, `forEach`...
  - ...
  - 1.0 : Fully complete language ready for production.
 
