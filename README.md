@@ -24,6 +24,8 @@ Don't break your code with exceptions or goto/label. Write your code as it shoul
 
 Read your code from up to down and easily understand it.
 
+No keywords, only your code appears.
+
 ## Take a look at Breeze
 
 ```breeze
