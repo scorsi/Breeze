@@ -81,6 +81,17 @@ I wanted to have a really light syntaxe with high possibility.
 
 ## Why using Breeze ?
 
-
+You probably don't want to use Breeze. I means, actually.
 
 Breeze is an experimental language, not ready to use in production.
+
+## Road map
+
+ - 0.1 : Working language.
+ - 0.2 : Add arrays.
+ - 0.3 : Add immutable and private variable declaration.
+ - 0.4 : Add more default attributes methodes as `let`, `apply`, `forEach`...
+ - ...
+ - 1.0 : Fully complete language ready for production.
+
+__Note: bug fix not displayed (e.g. 0.1.1).__
