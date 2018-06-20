@@ -1,5 +1,7 @@
 # Breeze - Code with freshness without limits
 
+Work in progress.
+
 Inspired by Kotlin and JavaScript.
 
 ### Functional Object-oriented
