@@ -14,7 +14,7 @@ MyClass = {
 a = MyClass()
 system.print(a.c())
 ```
-Javascript:
+Javascript (NodeJS):
 ```javascript
 class MyClass {
   constructor() {
@@ -28,7 +28,7 @@ class MyClass {
 a = new MyClass()
 console.log(a.c())
 ```
-Python:
+Python (3):
 ```python
 class MyClass(object):
     def __init__(self):
@@ -36,7 +36,7 @@ class MyClass(object):
         self.b = 42
 
     def c(self):
-        return '{}{}'.format(self.a, self.b)
+        return self.a + str(self.b)
 
 
 a = MyClass()
@@ -73,13 +73,13 @@ struct MyClass {
 
 char* MyClass_c(struct MyClass* class) {
   size_t len = strlen(class->a) + breeze_intlen(class->b);
-  char* buf = malloc(len);
+  char* buf = (char*) malloc(len);
   sprintf(buf, "%s%d", class->a, class->b);
   return buf;
 }
 
 struct MyClass* MyClass_new() {
-  struct MyClass* class = malloc(sizeof(struct MyClass));
+  struct MyClass* class = (struct MyClass*) malloc(sizeof(struct MyClass));
   class->c = &MyClass_c;
   return class;
 }
