@@ -1,99 +1,116 @@
 # Breeze - Code with freshness without limits
 
-Inspired by Kotlin and JavaScript.
+Work in progress. I'm again refractoring everything.
 
-### Functional Object-oriented
-
-Control your data as it coming with lot of functional thinking and data control flow.
-
-### Typed with type inferences
-
-Typed for better control of your code.
-
-### Prototype-based
-
-Create or alter a prototype will result of a creation of a new type.
-
-Change your data on the road. Everything is customizable, perfect for high possibility.
-
-### No exceptions
-
-Don't break your code with exceptions or goto/label. Write your code as it should be executed.
-
-### Light and understandable syntax
-
-Read your code from up to down and easily understand it.
-
-No keywords, only your code appears.
-
-## Take a look at Breeze
-
+Breeze:
 ```breeze
-# Variable declaration
-a = 0
-
-# Function without arguments declaration
-b = () {
-  0
+MyClass = {
+  a = "str"
+  b = 42
+  c = () {
+    a + b
+  }
 }
-
-# Function with arguments declaration
-c = (d) {
-  a + b() + d
-}
-
-# Proto declaration
-todoProto = {
-  todoString = "todo"
-  todo = () { self.todoString }
-}
-
-# Proto assignement
-test = todoProto.new()
-
-# Function call
-system.print(test.todo()) # Display "todo"
-
-# Function declaration to proto
-test.todo2 = () { "todo2" }
-
-# Piped function call
-test.todo2() |> system.print() # Display "todo2"
-
-# Anonyme function declaration
-(s) {
-  system.print(s)
-} ("tada") # Display "tada"
-
-getFunc = () {
-  (a, b) { a + b }
-}
-
-func = getFunc()
-func(1, 1) |> system.print() # Display "2"
+a = MyClass()
+system.print(a.c())
 ```
+Javascript (NodeJS):
+```javascript
+class MyClass {
+  constructor() {
+    this.a = "str"
+    this.b = 42
+  }
+  c() {
+    return this.a + this.b
+  }
+}
+a = new MyClass()
+console.log(a.c())
+```
+Python (3):
+```python
+class MyClass(object):
+    def __init__(self):
+        self.a = "str"
+        self.b = 42
 
-## The idea behind Breeze
+    def c(self):
+        return self.a + str(self.b)
 
-The idea behind Breeze was to create something new and also learning how programming language works and how to do one. Because in the future I would like to create my own language.
 
-I wanted to have a really light syntaxe with high possibility.
+a = MyClass()
+print(a.c())
+```
+Ruby:
+```ruby
+class MyClass
+  attr_reader :a, :b
+  def initialize()
+    @a = "str"
+    @b = 42
+  end
+  def c()
+    a + b.to_s
+  end
+end
 
-## Why using Breeze ?
+a = MyClass.new()
+puts(a.c)
+```
+Java:
+```java
+class MyClass {
+  String a = "str";
+  int b = 42;
 
-You probably don't want to use Breeze. I means, actually.
+  public MyClass() {
+  }
 
-Breeze is an experimental language, not ready to use in production.
+  public String c() {
+    return a + Integer.toString(b);
+  }
+}
 
-## Road map
+class Main {
+  public static void main(String[] args) {
+    MyClass a = new MyClass();
+    System.out.println(a.c());
+  }
+}
+```
+C
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "breeze/intlib.h"
 
- - 0.1 : Working language.
- - 0.2 : Add arrays.
- - 0.3 : Add nullable variable.
- - 0.4 : Add immutable and private variable declaration.
- - 0.5 : Add lambdas.
- - 0.6 : Add more default attributes methodes as `let`, `apply`, `forEach`...
- - ...
- - 1.0 : Fully complete language ready for production.
+struct MyClass {
+  char* a;
+  int b;
+  char* c();
+}
 
-__Note: bug fix not displayed (e.g. 0.1.1).__
+char* MyClass_c(struct MyClass* class) {
+  size_t len = strlen(class->a) + breeze_intlen(class->b);
+  char* buf = (char*) malloc(len);
+  sprintf(buf, "%s%d", class->a, class->b);
+  return buf;
+}
+
+struct MyClass* MyClass_new() {
+  struct MyClass* class = (struct MyClass*) malloc(sizeof(struct MyClass));
+  class->c = &MyClass_c;
+  return class;
+}
+
+int main(int argc, char const *argv[]) {
+  struct MyClass* a = MyClass_new();
+  char* a_c = a->c(a);
+  printf("%s\n", a_c);
+  free(a_c);
+  free(a);
+  return 0;
+}
+```
