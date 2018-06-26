@@ -14,6 +14,7 @@ system.print(a.toto)
 a.tata = () {
   "tata"
 }
+system.print(a.tata)
 ```
 Javascript:
 ```javascript
