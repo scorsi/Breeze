@@ -1,0 +1,46 @@
+x = 0
+{ x = x + 1 }.while(x < 42)
+Iterator.new(0,10).forEach({ idx ->
+    println(idx)
+})
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach({ idx ->
+    println(idx)
+})
+
+fun = { a, b -> a - b }
+funA = fun.bind(1, 42)
+funA(10) /* 32 */
+funB = fun.bind("b", 42)
+funB(10) /* -32 */
+
+fun = fun.bind("a", 0)      /* By default a = 0 */
+         .bind("b", 0)      /* By default b = 0 */
+
+fun.call([b = 42])          /* Call fun with b = 42 (instead of 0) and a = 0 */
+
+equal = { a, b -> a == b }
+equalThan = { a -> equal.bind("a", a) }
+
+Number.@isEqualTo = { equal.bind(this) }
+2.isEqualTo(2).ifTrue({ println("it works") })
+
+a = 2
+equalThan2 = equalThan(2)
+
+equalThan2(a).ifTrue({ println("it works") })
+
+a |> equalThan2
+    .ifTrue({ println("it works") })
+
+0.match()
+    .case({ x -> x == 0}, {})
+    .case(equal(1), {})
+    .case(equal(1), {})
+    .default({})
+
+(0 == 0).ifTrue({})
+        .ifFalse({})
+
+(0 == 0).match()
+    .case(true, {})
+    .case(false, {})

@@ -1,0 +1,42 @@
+variable = 42
+@constant = 42
+
+42.toto = "a"
+
+number = 0.0
+string = "string"
+bool = true
+
+map = [key1="value1", key2="value2"]
+map["key1"] = "newValue1"
+
+array = ["value1", "value2"]
+array.append("value")
+
+[0, 1][0].type
+
+@functionNoArg = { print("WIP") }
+functionNoArg()
+
+@functionOneArg = { a -> print(a) }
+functionOneArg(42)
+
+@functionTwoArg = { a, b -> print("$a$b") }
+functionTwoArg(42, "test")
+
+@myClass = [
+  myPublicAttribute = "public",
+
+  @myConstantAttribute = "constant",
+
+  myMethod = {
+    print("$(this.myPublicAttribute)$(this.myConstantAttribute)")
+    <- true
+  }
+]
+
+v = (1.0 > 0.0).let({ /* this -> */
+  this.ifTrue({ print("true") })
+  this.ifFalse({ print("false") })
+  /* <- this */
+})

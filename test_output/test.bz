@@ -1,9 +1,0 @@
-MyClass = {
-  a = "str"
-  b = 42
-  c = () {
-    a + b
-  }
-}
-a = MyClass()
-system.print(a.c())
