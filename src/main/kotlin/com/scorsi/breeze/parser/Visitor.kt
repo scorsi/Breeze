@@ -2,7 +2,7 @@ package com.scorsi.breeze.parser
 
 import com.scorsi.breeze.ast.Node
 
-class ImplBreezeVisitor : BreezeBaseVisitor<Node>() {
+class Visitor : BreezeBaseVisitor<Node>() {
     override fun visitExprList(ctx: BreezeParser.ExprListContext?): Node =
             Node.ListNode(ArrayList(ctx!!.expr()!!.map { visit(it)!! }))
 
